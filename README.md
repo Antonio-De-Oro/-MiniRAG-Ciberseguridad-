@@ -366,8 +366,3 @@ La interfaz de usuario fue diseñada bajo una estética táctica de centro de op
   ```
 
 ---
-
-## 📄 Licencia
-
-Este proyecto fue desarrollado con fines educativos y de investigación aplicada para el taller práctico de **LLM y RAG**.
-Distribuido bajo la licencia MIT. ¡Siéntete libre de utilizarlo, extenderlo y mejorarlo!
