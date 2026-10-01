@@ -1,0 +1,8 @@
+CRIPTOGRAFÍA Y CIFRADO DE DATOS
+La criptografía es una disciplina fundamental en la ciberseguridad que busca proteger la confidencialidad, integridad y autenticidad de la información en tránsito y en reposo.
+
+El cifrado simétrico utiliza una única clave compartida tanto para cifrar como para descifrar la información. Es un método muy rápido y eficiente, ideal para procesar grandes volúmenes de datos. El estándar más utilizado en la actualidad para este tipo de cifrado es AES (Advanced Encryption Standard).
+
+Por otro lado, el cifrado asimétrico, también conocido como criptografía de clave pública, utiliza un par de claves matemáticamente vinculadas: una clave pública que se distribuye abiertamente para cifrar los mensajes, y una clave privada que el receptor mantiene en estricto secreto para descifrarlos. Algoritmos como RSA y ECC pertenecen a esta categoría, y son fundamentales para establecer conexiones seguras en internet.
+
+Las funciones Hash, como SHA-256, son algoritmos matemáticos que transforman un bloque de datos en una cadena de caracteres de longitud fija. A diferencia del cifrado tradicional, el hashing es un proceso unidireccional, lo que significa que no se puede recuperar el archivo original a partir del hash. Se utiliza principalmente para verificar la integridad de los archivos y almacenar contraseñas de forma segura en las bases de datos.

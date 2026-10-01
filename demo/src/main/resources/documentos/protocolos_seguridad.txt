@@ -1,0 +1,4 @@
+PROTOCOLOS DE SEGURIDAD EN REDES
+IPsec (Internet Protocol Security) es un conjunto de protocolos que asegura las comunicaciones sobre redes IP mediante la autenticación y encriptación de cada paquete de datos. Se utiliza comúnmente en la implementación de VPNs.
+TLS (Transport Layer Security) proporciona privacidad e integridad de datos entre dos aplicaciones que se comunican por la red. Es el sucesor de SSL y es fundamental para asegurar el tráfico web mediante HTTPS.
+El protocolo SSH (Secure Shell) permite el acceso remoto seguro a servidores y dispositivos de red, reemplazando a protocolos inseguros como Telnet, los cuales transmiten información en texto plano.

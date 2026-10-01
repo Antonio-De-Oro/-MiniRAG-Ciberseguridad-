@@ -1,0 +1,4 @@
+BASTIONADO DE SERVIDORES (HARDENING)
+El bastionado o hardening es el proceso de asegurar un sistema reduciendo su superficie de ataque. Esto implica deshabilitar servicios innecesarios, cerrar puertos no utilizados y eliminar cuentas de usuario predeterminadas.
+La implementación del principio de menor privilegio asegura que los usuarios y procesos solo tengan los permisos estrictamente necesarios para realizar sus funciones.
+El uso de firewalls de host, la actualización constante de parches de seguridad y la configuración de políticas de contraseñas robustas son pilares fundamentales del bastionado.

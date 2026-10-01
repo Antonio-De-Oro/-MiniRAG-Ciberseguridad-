@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiniRAG Ciberseguridad | CyberOps Command HUD</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Cyber Background Elements -->
+    <div class="cyber-grid"></div>
+    <div class="radar-scanline"></div>
+    <div class="ambient-glow glow-emerald"></div>
+    <div class="ambient-glow glow-cyan"></div>
+
+    <main class="app-shell">
+        <!-- Header HUD -->
+        <header class="cyber-panel hud-header">
+            <div class="hud-top-telemetry">
+                <div id="healthNode" class="telemetry-node offline">
+                    <span id="healthBeacon" class="pulsing-beacon red">
+                        <span class="beacon-core"></span>
+                        <span class="beacon-wave"></span>
+                    </span>
+                    <span id="healthText" class="telemetry-text">NODE: <strong>RAG-CORE-01</strong> // <span id="healthStatus" class="status-offline">OFFLINE</span></span>
+                </div>
+                <div class="telemetry-node hide-mobile">
+                    <span class="pulsing-beacon cyan">
+                        <span class="beacon-core"></span>
+                        <span class="beacon-wave"></span>
+                    </span>
+                    <span class="telemetry-text">EMBEDDINGS: <strong>ONNX E5-SMALL-V2</strong></span>
+                </div>
+                <div id="dbNode" class="telemetry-node hide-mobile offline">
+                    <span id="dbChip" class="status-chip offline">
+                        <span id="dbDot" class="chip-dot red"></span>
+                        <span id="dbStatusText">MARIADB OFFLINE</span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="hud-main-content">
+                <div class="title-row">
+                    <div class="shield-icon-wrapper">
+                        <svg class="cyber-shield" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <path d="M9 12l2 2 4-4" stroke-dasharray="10" class="shield-check"/>
+                        </svg>
+                    </div>
+                    <h1 class="hud-title">MiniRAG <span class="gradient-accent">Ciberseguridad</span></h1>
+                    <span class="version-tag">CYBER-OPS</span>
+                </div>
+                <p class="hud-description">Centro de inteligencia defensiva y consulta contextual mediante LLM &amp; arquitectura RAG</p>
+            </div>
+            <div class="cyber-border-accent"></div>
+        </header>
+
+        <!-- Query Console -->
+        <section class="cyber-panel console-section">
+            <div class="panel-hud-bar">
+                <div class="hud-tag">
+                    <span class="terminal-symbol">$</span>
+                    <span>PROMPT_QUERY</span>
+                </div>
+                <div class="shortcut-pill">
+                    <kbd>Ctrl</kbd> + <kbd>Enter</kbd> para enviar
+                </div>
+            </div>
+
+            <!-- Example Presets -->
+            <div class="presets-section">
+                <div class="presets-header">
+                    <span class="presets-title">Vectores de consulta predefinidos:</span>
+                </div>
+                <div class="pills-grid">
+                    <button type="button" class="preset-pill" data-index="0">
+                        <span class="pill-prefix">#</span>
+                        <span class="pill-label">&iquest;Para qu&eacute; sirve el protocolo IPsec?</span>
+                        <span class="pill-glow"></span>
+                    </button>
+                    <button type="button" class="preset-pill" data-index="1">
+                        <span class="pill-prefix">#</span>
+                        <span class="pill-label">&iquest;Cu&aacute;les son las fases del pentesting?</span>
+                        <span class="pill-glow"></span>
+                    </button>
+                    <button type="button" class="preset-pill" data-index="2">
+                        <span class="pill-prefix">#</span>
+                        <span class="pill-label">&iquest;En qu&eacute; consiste el bastionado de servidores?</span>
+                        <span class="pill-glow"></span>
+                    </button>
+                    <button type="button" class="preset-pill" data-index="3">
+                        <span class="pill-prefix">#</span>
+                        <span class="pill-label">&iquest;C&oacute;mo se configura OSPF?</span>
+                        <span class="pill-glow"></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Prompt Textarea -->
+            <div class="input-matrix-wrapper">
+                <div class="matrix-corner tl"></div>
+                <div class="matrix-corner tr"></div>
+                <div class="matrix-corner bl"></div>
+                <div class="matrix-corner br"></div>
+                <textarea 
+                    id="preguntaInput" 
+                    placeholder="Escribe tu consulta sobre seguridad perimetral, protocolos, hardening o amenazas..." 
+                    rows="4" 
+                    spellcheck="false"
+                ></textarea>
+            </div>
+
+            <!-- Console Controls -->
+            <div class="console-actions">
+                <div class="input-metrics">
+                    <span id="charCount" class="metric-mono">0 chars</span>
+                    <span class="metric-divider">&#8226;</span>
+                    <span class="metric-mono status-ready">STATUS: READY</span>
+                </div>
+
+                <button type="button" id="btnConsultar" class="cyber-btn-primary">
+                    <span class="btn-highlight"></span>
+                    <span class="btn-inner">
+                        <svg class="btn-svg-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                        <span class="btn-caption">Consultar</span>
+                    </span>
+                    <span class="btn-loading-state hidden">
+                        <span class="cyber-spinner"></span>
+                        <span class="loading-label">Analizando vectores...</span>
+                    </span>
+                </button>
+            </div>
+
+            <!-- Alert Box -->
+            <div id="alertBox" class="cyber-alert-banner hidden">
+                <span class="alert-icon">&#9888;&#65039;</span>
+                <span id="alertMessage" class="alert-text"></span>
+            </div>
+
+            <div class="cyber-border-accent"></div>
+        </section>
+
+        <!-- Response Console -->
+        <section id="responseSection" class="cyber-panel response-section hidden">
+            <div class="panel-hud-bar response-bar">
+                <div class="terminal-dots">
+                    <span class="dot dot-red"></span>
+                    <span class="dot dot-yellow"></span>
+                    <span class="dot dot-green"></span>
+                    <span class="terminal-title">RESPONSE_FEED // GEMINI + RECOVERED_DOCUMENTS</span>
+                </div>
+                <button type="button" id="btnCopy" class="hud-tool-btn" title="Copiar al portapapeles">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    <span id="copyLabel">Copiar</span>
+                </button>
+            </div>
+
+            <div class="terminal-terminal-container">
+                <div class="scanline-overlay"></div>
+                <div id="responseContent" class="terminal-text-output"></div>
+            </div>
+
+            <div class="cyber-border-accent"></div>
+        </section>
+
+        <!-- History Audit Log -->
+        <section class="cyber-panel history-section">
+            <div class="panel-hud-bar">
+                <div class="hud-tag">
+                    <span class="terminal-symbol">#</span>
+                    <span>HISTORIAL DE CONSULTAS</span>
+                    <span id="historyBadge" class="log-count-pill">0 logs</span>
+                </div>
+                <button type="button" id="btnRefreshHistory" class="hud-tool-btn" title="Sincronizar historial">
+                    <svg class="refresh-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M23 4v6h-6"></path>
+                        <path d="M1 20v-6h6"></path>
+                        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                    </svg>
+                    <span>Sincronizar</span>
+                </button>
+            </div>
+
+            <div id="historyList" class="history-cards-scroll">
+                <div class="history-empty-state">
+                    <div class="radar-ping-ring"></div>
+                    <span class="empty-msg">Consultando registros en base de datos MariaDB...</span>
+                </div>
+            </div>
+
+            <div class="cyber-border-accent"></div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

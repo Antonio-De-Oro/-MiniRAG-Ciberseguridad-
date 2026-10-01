@@ -1,0 +1,4 @@
+ANÁLISIS DE VULNERABILIDADES Y PENTESTING
+El análisis de vulnerabilidades es el proceso de identificar, cuantificar y priorizar las debilidades en un sistema o red. Herramientas automatizadas escanean los puertos y servicios en busca de configuraciones erróneas o software desactualizado.
+El Pentesting (Prueba de Penetración) va un paso más allá, simulando un ataque cibernético autorizado para explotar las vulnerabilidades encontradas y evaluar el impacto real si un atacante malicioso lograra vulnerar el sistema.
+Fases del pentesting incluyen reconocimiento, escaneo, explotación, mantenimiento del acceso y borrado de huellas.
